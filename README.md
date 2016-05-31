@@ -19,7 +19,7 @@ Here, we will give you what you need to get started.
 	- The apparel size
 	- The number of apparel that will be ordered
 2. Once all the parameters are passed in through the interface the quoter will reference the apparel provider's api for the pricing (API documentation below)
-3. Then you have to add the cost of shipping which if the shipping weight is < '0.4' then it should be 1.00 per item for quantities under 48 pieces, and $0.75 for quantities 48 items or more. If the shipping weight > '0.4' then it it should be $0.50 for quantities under 45
+3. Then you have to add the cost of shipping which if the shipping weight is <= '0.4' then it should be 1.00 per item for quantities under 48 pieces, and $0.75 for quantities 48 items or more. If the shipping weight > '0.4' then it it should be $0.50 for quantities under 48
 and $0.25 for quantities 48 or more.
 4. It then must make a calculation for the salesman compensation which adds 7% to the final order cost.
 5. Then the function takes the calculated cost and marks it up. The mark up percentage should be dependent on the total order cost (quantity*individual cost). If the total cost is $800 or less, markups by 50%. If the total order cost is more than $800 markup by 45%. The interface should show a quote price per item and a total price based on the parameters passed through. Make sure you have a way to list the prices after every mathematical operation for grading/debugging purposes.
