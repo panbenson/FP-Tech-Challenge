@@ -8,13 +8,67 @@ html.
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 	</head>
 	<body>
-		<div ng-controller="AppCtrl" ng-cloak></div>
-			<!-- INSERT HTML CODE HERE -->
-			<h2> FRESH PRINTS TECH CHALLENGE </h2>
+		<nav class="navbar navbar-default navbar-fixed-top">
+			<div class="logo-wrapper">
+				<img src="https://freshprints.com/assets/images/logo.svg">
+			</div>
+		</nav>
+		<div ng-app="myApp">
+			<div ng-controller="AppCtrl">
+				<div class="container wrapper">
+					<div class="survey">
+						<h3 class="white">Apparel Quote</h3><hr>
+							<form>
+								<div class="form-group row">
+									<label class="white col-sm-2">Select Style code: </label>
+
+									<div class="col-sm-4">
+										<select class="form-control" name='sr' ng-model="selectedStyle" ng-options="item.style_code for item in apparel" ng-change="updateFields()" required>
+										<option value="">Please select</option>
+										</select>
+									</div>
+								</div>
+
+								<div class="form-group row">
+									<div class="col-sm-4">
+										<label class="white">Select color code: </label>
+										<select class="form-control"name='cc' ng-disabled="!mappedColor" ng-model="selectedColor" ng-options="item for item in mappedColor" required>
+										<option value="">Please select</option>
+										</select>
+									</div>
+
+									<div class="col-sm-4">
+										<label class="white">Size: </label>
+										<select class="form-control" name='sc' ng-disabled="!mappedSize" ng-model="selectedSize" ng-options="item for item in mappedSize" required>
+										<option value="">Please select</option>
+										</select>
+									</div>
+
+									<div class="col-sm-4">
+										<label class="white">Quantity: </label>
+										<input class="form-control" type="number" min="1" ng-model="quantity" required></input>
+									</div>
+								</div>
+
+								<button class="button form-control" ng-click="submitForm()">Submit</button>
+							</form>
+					</div>
+
+					<div class="col-sm-4 col-sm-offset-4" ng-show="errorMsg||total">
+						<div class="output"><span style="color:red">{{errorMsg}}</span>{{total}}</div>
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
 		<script src="js/lib/angular/angular.js"></script>
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.10/angular-ui-router.js"></script>
 		<script src="js/app.js"></script>
 		<script src="js/services.js"></script>
 		<script src="js/controllers.js"></script>
 		<script src="js/filters.js"></script>
 		<script src="js/directives.js"></script>
+		<footer class="footer"><b>DEMO</b></footer>
 	</body>
